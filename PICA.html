@@ -1,0 +1,1403 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Colegio Mundo America | Plataforma Escolar</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --azul: #173b8f;
+      --azul-claro: #2864d7;
+      --celeste: #eaf2ff;
+      --amarillo: #ffc107;
+      --verde: #16a085;
+      --rojo: #e74c3c;
+      --oscuro: #14213d;
+      --gris: #f4f6f9;
+      --blanco: #ffffff;
+      --texto: #333;
+    }
+
+    body {
+      background: var(--gris);
+      color: var(--texto);
+    }
+
+    /* ================= HEADER ================= */
+
+    header {
+      background: linear-gradient(135deg, #10265e, #2864d7);
+      color: white;
+      padding: 15px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 3px 15px rgba(0,0,0,.2);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: white;
+      color: var(--azul);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    .logo h2 {
+      font-size: 20px;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: .3s;
+    }
+
+    nav a:hover {
+      color: var(--amarillo);
+    }
+
+    .menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    /* ================= HERO ================= */
+
+    .hero {
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      padding: 60px 20px;
+
+      background:
+        linear-gradient(rgba(15,35,90,.8), rgba(20,70,160,.8)),
+        radial-gradient(circle at 20% 20%, #58a6ff, transparent 30%),
+        radial-gradient(circle at 80% 80%, #ffc107, transparent 25%);
+
+      background-size: cover;
+    }
+
+    .hero-content {
+      max-width: 850px;
+      animation: aparecer 1.2s ease;
+    }
+
+    .hero h1 {
+      font-size: 60px;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      line-height: 1.7;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 25px;
+      border-radius: 30px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      transition: .3s;
+    }
+
+    .btn-primary {
+      background: var(--amarillo);
+      color: #222;
+    }
+
+    .btn-primary:hover {
+      transform: scale(1.08);
+      box-shadow: 0 5px 20px rgba(255,193,7,.4);
+    }
+
+    .btn-blue {
+      background: var(--azul-claro);
+      color: white;
+    }
+
+    .btn-green {
+      background: var(--verde);
+      color: white;
+    }
+
+    /* ================= SECCIONES ================= */
+
+    section {
+      padding: 80px 7%;
+    }
+
+    .titulo {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .titulo h2 {
+      color: var(--azul);
+      font-size: 35px;
+      margin-bottom: 10px;
+    }
+
+    .titulo p {
+      color: #666;
+    }
+
+    /* ================= ESTADISTICAS ================= */
+
+    .estadisticas {
+      margin-top: -60px;
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .stat {
+      background: white;
+      padding: 30px;
+      text-align: center;
+      border-radius: 15px;
+      box-shadow: 0 8px 30px rgba(0,0,0,.1);
+      transition: .3s;
+    }
+
+    .stat:hover {
+      transform: translateY(-10px);
+    }
+
+    .stat h2 {
+      color: var(--azul-claro);
+      font-size: 35px;
+    }
+
+    /* ================= DEPARTAMENTOS ================= */
+
+    .departamentos {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 18px;
+      box-shadow: 0 5px 20px rgba(0,0,0,.08);
+      transition: .35s;
+      border-top: 5px solid var(--azul-claro);
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,.15);
+    }
+
+    .icon {
+      width: 65px;
+      height: 65px;
+      background: var(--celeste);
+      color: var(--azul);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 15px;
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    .card h3 {
+      color: var(--azul);
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      line-height: 1.6;
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    /* ================= SERVICIOS ================= */
+
+    #servicios {
+      background: #eaf2ff;
+    }
+
+    .servicios {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .servicio {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      text-align: center;
+      transition: .3s;
+    }
+
+    .servicio:hover {
+      transform: scale(1.04);
+    }
+
+    .servicio .precio {
+      color: var(--verde);
+      font-size: 25px;
+      font-weight: bold;
+      margin: 15px;
+    }
+
+    /* ================= COLECTURIA ================= */
+
+    .pago-container {
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.1);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .campo {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .campo.full {
+      grid-column: 1 / -1;
+    }
+
+    .campo label {
+      font-weight: bold;
+      color: var(--azul);
+    }
+
+    .campo input,
+    .campo select,
+    .campo textarea {
+      padding: 13px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      outline: none;
+      font-size: 15px;
+    }
+
+    .campo input:focus,
+    .campo select:focus,
+    .campo textarea:focus {
+      border-color: var(--azul-claro);
+    }
+
+    /* ================= NOTICIAS ================= */
+
+    .noticias {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .noticia {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0,0,0,.08);
+    }
+
+    .noticia-img {
+      height: 180px;
+      background: linear-gradient(135deg, #2864d7, #62b0ff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 60px;
+      color: white;
+    }
+
+    .noticia-contenido {
+      padding: 25px;
+    }
+
+    .noticia h3 {
+      color: var(--azul);
+      margin-bottom: 10px;
+    }
+
+    /* ================= CONTACTO ================= */
+
+    .contacto {
+      background: linear-gradient(135deg, #10265e, #2864d7);
+      color: white;
+    }
+
+    .contacto-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .contacto h2 {
+      font-size: 35px;
+      margin-bottom: 20px;
+    }
+
+    .contacto-info {
+      line-height: 2;
+      font-size: 17px;
+    }
+
+    .contacto .campo label {
+      color: white;
+    }
+
+    /* ================= MODAL ================= */
+
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.65);
+      z-index: 3000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: white;
+      width: 100%;
+      max-width: 550px;
+      border-radius: 20px;
+      padding: 35px;
+      position: relative;
+      animation: aparecer .4s;
+    }
+
+    .cerrar {
+      position: absolute;
+      right: 20px;
+      top: 15px;
+      font-size: 25px;
+      cursor: pointer;
+    }
+
+    /* ================= FOOTER ================= */
+
+    footer {
+      background: #0b1738;
+      color: white;
+      padding: 40px 7%;
+      text-align: center;
+    }
+
+    .redes {
+      margin: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .redes span {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #1f4fae;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: .3s;
+    }
+
+    .redes span:hover {
+      transform: scale(1.2);
+      background: var(--amarillo);
+      color: black;
+    }
+
+    /* ================= ANIMACIONES ================= */
+
+    @keyframes aparecer {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: 1s;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ================= RESPONSIVE ================= */
+
+    @media(max-width: 900px) {
+
+      .estadisticas,
+      .servicios {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .departamentos,
+      .noticias {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      nav {
+        display: none;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        right: 0;
+        background: #173b8f;
+        flex-direction: column;
+        padding: 25px;
+      }
+
+      nav.active {
+        display: flex;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+    }
+
+    @media(max-width: 600px) {
+
+      .hero h1 {
+        font-size: 40px;
+      }
+
+      .estadisticas,
+      .departamentos,
+      .servicios,
+      .noticias,
+      .contacto-grid,
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .campo.full {
+        grid-column: auto;
+      }
+
+      section {
+        padding: 60px 5%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ================= HEADER ================= -->
+
+  <header>
+
+    <div class="logo">
+      <div class="logo-icon">🎓</div>
+
+      <div>
+        <h2>COLEGIO FUTURO</h2>
+        <small>Educación que transforma</small>
+      </div>
+    </div>
+
+    <nav id="menu">
+      <a href="#inicio">Inicio</a>
+      <a href="#departamentos">Departamentos</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#colecturia">Colecturía</a>
+      <a href="#noticias">Noticias</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+
+    <button class="menu-btn" onclick="abrirMenu()">☰</button>
+
+  </header>
+
+
+  <!-- ================= HERO ================= -->
+
+  <section class="hero" id="inicio">
+
+    <div class="hero-content">
+
+      <h1>Bienvenidos al Colegio Futuro</h1>
+
+      <p>
+        Una plataforma digital donde estudiantes, padres,
+        docentes y personal administrativo pueden acceder
+        fácilmente a todos los servicios del colegio.
+      </p>
+
+      <a href="#departamentos" class="btn btn-primary">
+        Explorar departamentos
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= ESTADISTICAS ================= -->
+
+  <section style="padding-top:0">
+
+    <div class="estadisticas">
+
+      <div class="stat">
+        <h2>1,250+</h2>
+        <p>Estudiantes</p>
+      </div>
+
+      <div class="stat">
+        <h2>85</h2>
+        <p>Docentes</p>
+      </div>
+
+      <div class="stat">
+        <h2>35</h2>
+        <p>Años educando</p>
+      </div>
+
+      <div class="stat">
+        <h2>98%</h2>
+        <p>Satisfacción</p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= DEPARTAMENTOS ================= -->
+
+  <section id="departamentos">
+
+    <div class="titulo">
+
+      <h2>Departamentos del Colegio</h2>
+
+      <p>
+        Accede rápidamente a cada área administrativa.
+      </p>
+
+    </div>
+
+
+    <div class="departamentos">
+
+      <div class="card reveal">
+
+        <div class="icon">📋</div>
+
+        <h3>Secretaría</h3>
+
+        <p>
+          Solicita certificados, matrículas,
+          documentos y trámites estudiantiles.
+        </p>
+
+        <button
+          class="btn btn-blue"
+          onclick="abrirModal('secretaria')">
+          Ingresar
+        </button>
+
+      </div>
+
+
+      <div class="card reveal">
+
+        <div class="icon">💰</div>
+
+        <h3>Colecturía</h3>
+
+        <p>
+          Consulta pensiones, pagos, facturas
+          y estados de cuenta.
+        </p>
+
+        <a href="#colecturia" class="btn btn-green">
+          Ver pagos
+        </a>
+
+      </div>
+
+
+      <div class="card reveal">
+
+        <div class="icon">👨‍🏫</div>
+
+        <h3>Área Académica</h3>
+
+        <p>
+          Consulta horarios, materias,
+          calificaciones y docentes.
+        </p>
+
+        <button
+          class="btn btn-blue"
+          onclick="abrirModal('academico')">
+          Entrar
+        </button>
+
+      </div>
+
+
+      <div class="card reveal">
+
+        <div class="icon">🛡️</div>
+
+        <h3>Inspección</h3>
+
+        <p>
+          Información sobre asistencia,
+          disciplina y convivencia escolar.
+        </p>
+
+        <button
+          class="btn btn-blue"
+          onclick="abrirModal('inspeccion')">
+          Consultar
+        </button>
+
+      </div>
+
+
+      <div class="card reveal">
+
+        <div class="icon">🏫</div>
+
+        <h3>Rectorado</h3>
+
+        <p>
+          Información institucional,
+          autoridades y comunicados oficiales.
+        </p>
+
+        <button
+          class="btn btn-blue"
+          onclick="abrirModal('rectorado')">
+          Ver información
+        </button>
+
+      </div>
+
+
+      <div class="card reveal">
+
+        <div class="icon">💻</div>
+
+        <h3>Soporte Tecnológico</h3>
+
+        <p>
+          Ayuda con plataformas virtuales,
+          cuentas y servicios digitales.
+        </p>
+
+        <button
+          class="btn btn-blue"
+          onclick="abrirModal('soporte')">
+          Solicitar ayuda
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= SERVICIOS / TIENDA ================= -->
+
+  <section id="servicios">
+
+    <div class="titulo">
+
+      <h2>Servicios Escolares</h2>
+
+      <p>
+        Compra o solicita servicios directamente desde la plataforma.
+      </p>
+
+    </div>
+
+
+    <div class="servicios">
+
+      <div class="servicio">
+
+        <div class="icon" style="margin:auto">📄</div>
+
+        <h3>Certificado</h3>
+
+        <p>Certificado estudiantil.</p>
+
+        <div class="precio">$5.00</div>
+
+        <button
+          class="btn btn-blue"
+          onclick="comprar('Certificado estudiantil', 5)">
+          Solicitar
+        </button>
+
+      </div>
+
+
+      <div class="servicio">
+
+        <div class="icon" style="margin:auto">👕</div>
+
+        <h3>Uniforme</h3>
+
+        <p>Uniforme institucional.</p>
+
+        <div class="precio">$35.00</div>
+
+        <button
+          class="btn btn-blue"
+          onclick="comprar('Uniforme institucional', 35)">
+          Comprar
+        </button>
+
+      </div>
+
+
+      <div class="servicio">
+
+        <div class="icon" style="margin:auto">📚</div>
+
+        <h3>Libros</h3>
+
+        <p>Kit de libros escolares.</p>
+
+        <div class="precio">$60.00</div>
+
+        <button
+          class="btn btn-blue"
+          onclick="comprar('Kit de libros', 60)">
+          Comprar
+        </button>
+
+      </div>
+
+
+      <div class="servicio">
+
+        <div class="icon" style="margin:auto">🎒</div>
+
+        <h3>Kit Escolar</h3>
+
+        <p>Útiles escolares completos.</p>
+
+        <div class="precio">$25.00</div>
+
+        <button
+          class="btn btn-blue"
+          onclick="comprar('Kit escolar', 25)">
+          Comprar
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= COLECTURIA ================= -->
+
+  <section id="colecturia">
+
+    <div class="titulo">
+
+      <h2>💰 Colecturía</h2>
+
+      <p>
+        Consulta y registra tus pagos escolares.
+      </p>
+
+    </div>
+
+
+    <div class="pago-container">
+
+      <form onsubmit="registrarPago(event)">
+
+        <div class="form-grid">
+
+          <div class="campo">
+
+            <label>Nombre del estudiante</label>
+
+            <input
+              type="text"
+              id="estudiante"
+              placeholder="Ej: Juan Pérez"
+              required>
+
+          </div>
+
+
+          <div class="campo">
+
+            <label>Cédula</label>
+
+            <input
+              type="text"
+              id="cedula"
+              placeholder="Número de cédula"
+              required>
+
+          </div>
+
+
+          <div class="campo">
+
+            <label>Concepto</label>
+
+            <select id="concepto">
+
+              <option>Pensión mensual</option>
+              <option>Matrícula</option>
+              <option>Uniforme</option>
+              <option>Libros</option>
+              <option>Otros</option>
+
+            </select>
+
+          </div>
+
+
+          <div class="campo">
+
+            <label>Valor</label>
+
+            <input
+              type="number"
+              id="valor"
+              placeholder="$0.00"
+              min="1"
+              required>
+
+          </div>
+
+
+          <div class="campo full">
+
+            <label>Método de pago</label>
+
+            <select id="metodo">
+
+              <option>Transferencia bancaria</option>
+              <option>Tarjeta de crédito</option>
+              <option>Tarjeta de débito</option>
+              <option>Efectivo</option>
+
+            </select>
+
+          </div>
+
+        </div>
+
+        <br>
+
+        <button class="btn btn-green" type="submit">
+          Registrar pago
+        </button>
+
+      </form>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= NOTICIAS ================= -->
+
+  <section id="noticias">
+
+    <div class="titulo">
+
+      <h2>Noticias y Eventos</h2>
+
+      <p>Conoce las últimas novedades del colegio.</p>
+
+    </div>
+
+
+    <div class="noticias">
+
+      <div class="noticia">
+
+        <div class="noticia-img">🏆</div>
+
+        <div class="noticia-contenido">
+
+          <h3>Juegos Intercolegiales</h3>
+
+          <p>
+            Nuestro colegio participará en los
+            próximos juegos deportivos.
+          </p>
+
+          <br>
+
+          <small>📅 15 de Octubre</small>
+
+        </div>
+
+      </div>
+
+
+      <div class="noticia">
+
+        <div class="noticia-img">🎓</div>
+
+        <div class="noticia-contenido">
+
+          <h3>Periodo de Matrículas</h3>
+
+          <p>
+            Se encuentra abierto el proceso
+            de matrícula para el nuevo periodo.
+          </p>
+
+          <br>
+
+          <small>📅 20 de Octubre</small>
+
+        </div>
+
+      </div>
+
+
+      <div class="noticia">
+
+        <div class="noticia-img">🎭</div>
+
+        <div class="noticia-contenido">
+
+          <h3>Festival Cultural</h3>
+
+          <p>
+            Disfruta de música, danza,
+            teatro y actividades culturales.
+          </p>
+
+          <br>
+
+          <small>📅 5 de Noviembre</small>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= CONTACTO ================= -->
+
+  <section class="contacto" id="contacto">
+
+    <div class="contacto-grid">
+
+      <div>
+
+        <h2>Contáctanos</h2>
+
+        <div class="contacto-info">
+
+          📍 Av. Principal y Calle Educación<br>
+
+          📞 +593 99 123 4567<br>
+
+          ✉️ info@colegiofuturo.edu.ec<br>
+
+          🕐 Lunes - Viernes: 07:00 - 16:00
+
+        </div>
+
+        <br>
+
+        <p>
+          Estamos disponibles para resolver
+          tus dudas y ayudarte con cualquier trámite.
+        </p>
+
+      </div>
+
+
+      <form onsubmit="enviarMensaje(event)">
+
+        <div class="campo">
+
+          <label>Nombre</label>
+
+          <input
+            type="text"
+            placeholder="Tu nombre"
+            required>
+
+        </div>
+
+        <br>
+
+        <div class="campo">
+
+          <label>Correo electrónico</label>
+
+          <input
+            type="email"
+            placeholder="correo@ejemplo.com"
+            required>
+
+        </div>
+
+        <br>
+
+        <div class="campo">
+
+          <label>Mensaje</label>
+
+          <textarea
+            rows="5"
+            placeholder="Escribe tu mensaje..."
+            required></textarea>
+
+        </div>
+
+        <br>
+
+        <button class="btn btn-primary">
+          Enviar mensaje
+        </button>
+
+      </form>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= MODAL ================= -->
+
+  <div class="modal" id="modal">
+
+    <div class="modal-content">
+
+      <span class="cerrar" onclick="cerrarModal()">×</span>
+
+      <h2 id="modalTitulo"></h2>
+
+      <br>
+
+      <p id="modalTexto"></p>
+
+      <br>
+
+      <button
+        class="btn btn-blue"
+        onclick="cerrarModal()">
+        Cerrar
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- ================= FOOTER ================= -->
+
+  <footer>
+
+    <h2>🎓 Colegio Mundo America</h2>
+
+    <p>
+      Educación, tecnología y futuro.
+    </p>
+
+    <div class="redes">
+
+      <span>f</span>
+      <span>◎</span>
+      <span>▶</span>
+      <span>𝕏</span>
+
+    </div>
+
+    <p>
+      © 2026 Colegio Mundo America. Todos los derechos reservados.
+    </p>
+
+  </footer>
+
+
+  <!-- ================= JAVASCRIPT ================= -->
+
+  <script>
+
+    /* MENÚ */
+
+    function abrirMenu() {
+
+      document
+        .getElementById("menu")
+        .classList.toggle("active");
+
+    }
+
+
+    /* MODALES */
+
+    function abrirModal(tipo) {
+
+      const titulo =
+        document.getElementById("modalTitulo");
+
+      const texto =
+        document.getElementById("modalTexto");
+
+      const datos = {
+
+        secretaria: {
+          titulo: "📋 Secretaría",
+          texto:
+            "Desde Secretaría puedes solicitar certificados, matrículas, documentos estudiantiles y realizar diferentes trámites administrativos."
+        },
+
+        academico: {
+          titulo: "👨‍🏫 Área Académica",
+          texto:
+            "Aquí podrás consultar materias, horarios, docentes, calificaciones y actividades académicas."
+        },
+
+        inspeccion: {
+          titulo: "🛡️ Inspección",
+          texto:
+            "Consulta información relacionada con asistencia, comportamiento, permisos y convivencia escolar."
+        },
+
+        rectorado: {
+          titulo: "🏫 Rectorado",
+          texto:
+            "Conoce información institucional, comunicados oficiales, proyectos y autoridades del colegio."
+        },
+
+        soporte: {
+          titulo: "💻 Soporte Tecnológico",
+          texto:
+            "Solicita asistencia para problemas con plataformas educativas, cuentas institucionales y servicios digitales."
+        }
+
+      };
+
+      titulo.textContent = datos[tipo].titulo;
+
+      texto.textContent = datos[tipo].texto;
+
+      document
+        .getElementById("modal")
+        .classList.add("active");
+
+    }
+
+
+    function cerrarModal() {
+
+      document
+        .getElementById("modal")
+        .classList.remove("active");
+
+    }
+
+
+    /* COMPRAS */
+
+    function comprar(producto, precio) {
+
+      const confirmar = confirm(
+        "Producto: " + producto +
+        "\nPrecio: $" + precio.toFixed(2) +
+        "\n\n¿Deseas solicitar este producto?"
+      );
+
+      if (confirmar) {
+
+        alert(
+          "✅ Solicitud registrada.\n\n" +
+          producto +
+          "\nTotal: $" +
+          precio.toFixed(2)
+        );
+
+      }
+
+    }
+
+
+    /* PAGOS */
+
+    function registrarPago(event) {
+
+      event.preventDefault();
+
+      const estudiante =
+        document.getElementById("estudiante").value;
+
+      const valor =
+        document.getElementById("valor").value;
+
+      const concepto =
+        document.getElementById("concepto").value;
+
+      const metodo =
+        document.getElementById("metodo").value;
+
+      alert(
+        "✅ Pago registrado correctamente\n\n" +
+        "Estudiante: " + estudiante +
+        "\nConcepto: " + concepto +
+        "\nValor: $" + valor +
+        "\nMétodo: " + metodo
+      );
+
+      event.target.reset();
+
+    }
+
+
+    /* CONTACTO */
+
+    function enviarMensaje(event) {
+
+      event.preventDefault();
+
+      alert(
+        "✅ ¡Mensaje enviado!\n\n" +
+        "La administración del colegio se pondrá en contacto contigo."
+      );
+
+      event.target.reset();
+
+    }
+
+
+    /* ANIMACIONES AL HACER SCROLL */
+
+    const elementos =
+      document.querySelectorAll(".reveal");
+
+    const observer =
+      new IntersectionObserver(
+        entries => {
+
+          entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+              entry.target.classList.add("visible");
+
+            }
+
+          });
+
+        },
+        {
+          threshold: .15
+        }
+      );
+
+
+    elementos.forEach(elemento => {
+
+      observer.observe(elemento);
+
+    });
+
+
+    /* CERRAR MODAL AL HACER CLICK AFUERA */
+
+    document
+      .getElementById("modal")
+      .addEventListener("click", function(e) {
+
+        if (e.target === this) {
+
+          cerrarModal();
+
+        }
+
+      });
+
+  </script>
+
+</body>
+</html>
